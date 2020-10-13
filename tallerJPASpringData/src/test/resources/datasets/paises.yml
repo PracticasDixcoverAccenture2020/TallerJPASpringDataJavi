@@ -1,0 +1,7 @@
+Pais:
+  - idPais: 1
+    nombre: "España"
+  - idPais: 2
+    nombre: "Portugal"
+  - idPais: 3
+    nombre: "Ecuador"
