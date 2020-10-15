@@ -18,6 +18,7 @@ import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.junit5.api.DBRider;
 
 import es.biblioteca.entity.Autor;
+import es.biblioteca.entity.Pais;
 import es.biblioteca.specification.AutorSpecification;
 
 @DataJpaTest
@@ -30,7 +31,7 @@ public class AutorRepositoryTest {
 
 
 	@Test
-	@DataSet(value = "autores.yml", cleanBefore = true, cleanAfter = true)
+	@DataSet(value = "autores.yml,paises.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar todos")
 	public void testFindAll() {
 
@@ -41,7 +42,7 @@ public class AutorRepositoryTest {
 
 
 	@Test
-	@DataSet(value = "autorKenFollet.yml", cleanBefore = true, cleanAfter = true)
+	@DataSet(value = "autorKenFollet.yml, paises.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar por id")
 	public void testFindById() {
 
@@ -57,13 +58,18 @@ public class AutorRepositoryTest {
 	}
 
 	@Test
-	@DataSet(value = "autores.yml", cleanBefore = true, cleanAfter = true)
+	@DataSet(value = "autores.yml, paises.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario añadir autor")
 	public void testAddAutor() {
-
+		  Pais pais = Pais.builder()
+				  			.id(5)
+				  			.nombre("Francia")
+				  			.build();
+				  					
 		  Autor nuevoAutor = Autor.builder()
 				  							.id(25)
 				  							.nombre("Carlos Sisi")
+				  							.pais(pais)
 				  							.build();
 
 		  nuevoAutor = autorRepository.save(nuevoAutor);
@@ -90,7 +96,7 @@ public class AutorRepositoryTest {
 	}
 
 	@Test
-	@DataSet(value = "autores.yml, categorias.yml, editoriales.yml, libros.yml, autores_libros.yml", cleanBefore = true, cleanAfter = true)
+	@DataSet(value = "autores.yml, paises.yml, categorias.yml, editoriales.yml, libros.yml, autores_libros.yml", cleanBefore = true, cleanAfter = true)
 	@DisplayName("Test unitario buscar autores specification  con mas de un libro")
 	public void testFindAutorSpecificationMasDeUnLibro() {
 		Specification<Autor> specificationAutor = Specification.where(AutorSpecification.filterMasDeUnLibro());
@@ -102,12 +108,13 @@ public class AutorRepositoryTest {
 	}
 	
 	@Test
-	@DataSet(value = "autores.yml", cleanBefore = true, cleanAfter = true)
-	@DisplayName("Test unitario contar total")
-	public void testEncontrarTodos(){
-		Long autores = autorRepository.count();
+	@DataSet(value = "autores.yml, paises.yml", cleanBefore = true, cleanAfter = true)
+	@DisplayName("Test unitario comprobar pais")
+	public void testBuscarPais(){
 		
-		assertEquals(autores,18);
+		Optional<Autor> autor = autorRepository.findById(1);
+		
+		assertEquals(autor.get().getPais().getId(),5);
 	}
 
 }

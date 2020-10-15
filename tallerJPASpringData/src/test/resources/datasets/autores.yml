@@ -1,39 +1,56 @@
 Autor:
   - id: 1
     nombre: "Ken Follett"
+    pais_id: 5
   - id: 2
     nombre: "Eva García Sáenz de Urturi"
+    pais_id: 1
   - id: 3
     nombre: "Astrid Nilsen"
+    pais_id: 8
   - id: 4
     nombre: "Bram Stoker"
+    pais_id: 3
   - id: 5
     nombre: "Mary Shelley"
+    pais_id: 2
   - id: 6
     nombre: "Andy Weir"
+    pais_id: 2
   - id: 7
     nombre: "Stephen King"
+    pais_id: 6
   - id: 8
     nombre: "Ernest Cline"
+    pais_id: 6
   - id: 9
     nombre: "Juan Gómez-Jurado"
+    pais_id: 7
   - id: 10
     nombre: "Umberto Eco"
+    pais_id: 4
   - id: 11
     nombre: "Ben Kane"
+    pais_id: 4
   - id: 12
     nombre: "Isaac Asimov"
+    pais_id: 2
   - id: 13
     nombre: "Robert Kirkman"
+    pais_id: 8
   - id: 14
     nombre: "J.R.R. Tolkien"
+    pais_id: 8
   - id: 15
     nombre: "Stieg Larsson"  
+    pais_id: 3
   - id: 16
     nombre: "Jane Austen"
+    pais_id: 1
   - id: 17
     nombre: "Michael Connelly"
+    pais_id: 6
   - id: 18
     nombre: "Helena Martin" 
-    
+    pais_id: 5
 

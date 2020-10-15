@@ -1,6 +1,7 @@
 Autor:
   - id: 1
     nombre: "Ken Follett"
+    pais_id: 5
 
 Categoria:
   - id: 10
@@ -11,6 +12,11 @@ Editorial:
     nombre : "Planeta"
   - id: 2
     nombre: "B DE BOOKS"   
+
+Pais:
+  - id: 5
+    nombre: "Francia"
+
 Libro:
   - id: 1
     titulo: "Los Pilares de la Tierra"

@@ -2,14 +2,17 @@ package es.biblioteca.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.Optional;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import com.github.database.rider.core.api.dataset.DataSet;
 import com.github.database.rider.junit5.api.DBRider;
+
+import es.biblioteca.entity.Pais;
 
 
 @DataJpaTest
@@ -18,18 +21,29 @@ import com.github.database.rider.junit5.api.DBRider;
 public class PaisRepositoryTest {
 	
 	@Autowired
-	PaisRepository repo;
+	PaisRepository repoPais;
 	
 	@Test
 	@DataSet(value="paises.yml",cleanBefore = true, cleanAfter = true)
-	@DisplayName("Prueba")
+	@DisplayName("Prueba total paises")
 	public void testCount() {
 		//List<Pais> paises = repo.findAll();
 		//assertEquals(paises.size(),3);
 		
-		Long paises = repo.count();
+		Long paises = repoPais.count();
 
-		assertEquals(paises, 3);
+		assertEquals(paises, 9);
+	}
+	
+	@Test
+	@DataSet(value = "paises.yml,autores.yml", cleanBefore = true, cleanAfter = true)
+	@DisplayName("Buscar por id")
+	public void testFindId() {
+		
+		Optional <Pais> pais = repoPais.findById(5);
+		assertEquals(pais.isPresent(), true);
+		assertEquals(pais.get().getAutor().size(),2);
+		
 	}
 
 }

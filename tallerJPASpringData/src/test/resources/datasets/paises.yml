@@ -1,7 +1,19 @@
 Pais:
-  - idPais: 1
+  - id: 1
     nombre: "España"
-  - idPais: 2
+  - id: 2
     nombre: "Portugal"
-  - idPais: 3
+  - id: 3
     nombre: "Ecuador"
+  - id: 4
+    nombre: "Alemania"
+  - id: 5
+    nombre: "Francia"
+  - id: 6
+    nombre: "Inglaterra"
+  - id: 7
+    nombre: "Belgica"
+  - id: 8
+    nombre: "Italia"
+  - id: 9
+    nombre: "Holanda"
