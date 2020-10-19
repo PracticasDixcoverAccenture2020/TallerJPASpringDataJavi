@@ -19,12 +19,21 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Pais {
 	
+	/*
+	 * Id
+	 */
 	@Id
 	private int id;
 	
+	/*
+	 * Nombre
+	 */
 	@Column(name = "nombre", nullable = false, length = 150)
 	private String nombre;
 	
+	/*
+	 * Autores
+	 */
 	@OneToMany(mappedBy="pais")
     private List<Autor> autor;
 	

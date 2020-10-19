@@ -2,6 +2,7 @@ package es.biblioteca.repository;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
@@ -43,6 +44,28 @@ public class PaisRepositoryTest {
 		Optional <Pais> pais = repoPais.findById(5);
 		assertEquals(pais.isPresent(), true);
 		assertEquals(pais.get().getAutor().size(),2);
+		
+	}
+	
+	@Test
+	@DataSet (value = "paises.yml", cleanBefore = true, cleanAfter = true)
+	@DisplayName("Buscar por nombre")
+	public void testFindName() {
+		
+		List <Pais> paises = repoPais.findByNombre("Alemania");
+		
+		assertEquals(paises.size(), 1);
+		
+	}
+	
+	@Test
+	@DataSet (value = "paises.yml, autores.yml", cleanBefore = true, cleanAfter = true)
+	@DisplayName("Buscar pais por id de autor")
+	public void testFindByIdAutor() {
+		
+		Optional<Pais> pais = repoPais.findByAutor_id(1);
+		
+		assertEquals(pais.get().getNombre(),"Francia");
 		
 	}
 
